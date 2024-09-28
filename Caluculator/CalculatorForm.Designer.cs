@@ -2,7 +2,7 @@
 
 namespace Caluculator
 {
-    partial class Calculator
+    partial class CalculatorForm
     {
         /// <summary>
         ///  Required designer variable.

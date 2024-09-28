@@ -1,8 +1,8 @@
 namespace Caluculator
 {
-    public partial class Calculator : Form
+    public partial class CalculatorForm : Form
     {
-        public Calculator()
+        public CalculatorForm()
         {
             InitializeComponent();
         }
