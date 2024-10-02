@@ -1,5 +1,7 @@
 using Calculator.Command;
 using System.Reflection.Emit;
+using log4net;
+using log4net.Config;
 
 namespace Caluculator
 {
@@ -8,6 +10,8 @@ namespace Caluculator
         private int indexInputTextBoxes = 0;
 
         private OperationType operandType;
+
+        private static readonly ILog log = LogManager.GetLogger(typeof(CalculatorForm));
 
         enum OperationType
         {
@@ -20,6 +24,8 @@ namespace Caluculator
 
         public CalculatorForm()
         {
+            InitializeLogging();
+
             InitializeComponent();
 
             inputTextBoxes = new TextBox[2];
@@ -57,6 +63,27 @@ namespace Caluculator
             }
         }
 
+        private void InitializeLogging()
+        {
+            // log4net の設定を適用
+            XmlConfigurator.Configure();
+
+
+            // この部分の実装について、以下の対応をお願いします。
+            // Release時のログ出力がBOM付きという要件を満たしていないため、
+            // ログをUTF-8 BOM付きで出力する修正を行ってください。
+
+
+#if DEBUG
+            // Debug時は出力ウィンドウへ
+            log4net.Config.BasicConfigurator.Configure();
+            log.Info("Debugモード: 出力ウィンドウにログを出力します。");
+#else
+            // Release時はファイルへ
+            log4net.Config.BasicConfigurator.Configure();
+            log.Info("Releaseモード: log.txtファイルにログを出力します。");
+#endif
+        }
 
         private void TextBox_TextChanged0(object sender, EventArgs e)
         {
