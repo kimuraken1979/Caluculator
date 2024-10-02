@@ -30,14 +30,13 @@ namespace Caluculator
         /// </summary>
         private void InitializeComponent()
         {
-
             inputTextBoxes = new TextBox[2];
             no7TextButton = new TextButton();
             outputTextBox = new TextBox();
-            textButton1 = new TextButton();
-            textButton2 = new TextButton();
-            textButton4 = new TextButton();
-            textButton5 = new TextButton();
+            addTextButton = new TextButton();
+            subtractTextButton = new TextButton();
+            divideTextButton = new TextButton();
+            multiplyTextButton = new TextButton();
             textButton6 = new TextButton();
             no8TextButton = new TextButton();
             no9TextButton = new TextButton();
@@ -54,16 +53,6 @@ namespace Caluculator
             allClearTextButton = new TextButton();
             SuspendLayout();
             // 
-            // inputTextBoxes[0]
-            // 
-            inputTextBoxes[0].Font = new Font("Yu Gothic UI", 20F);
-            inputTextBoxes[0].Location = new Point(12, 12);
-            inputTextBoxes[0].Name = "inputTextBoxes[0]";
-            inputTextBoxes[0].ReadOnly = true;
-            inputTextBoxes[0].Size = new Size(362, 52);
-            inputTextBoxes[0].TabIndex = 2;
-            inputTextBoxes[0].TextAlign = HorizontalAlignment.Right;
-            // 
             // no7TextButton
             // 
             no7TextButton.Font = new Font("Yu Gothic UI", 20F);
@@ -73,16 +62,6 @@ namespace Caluculator
             no7TextButton.TabIndex = 21;
             no7TextButton.Text = "7";
             no7TextButton.UseVisualStyleBackColor = true;
-            // 
-            // inputTextBoxes[1]
-            // 
-            inputTextBoxes[1].Font = new Font("Yu Gothic UI", 20F);
-            inputTextBoxes[1].Location = new Point(12, 161);
-            inputTextBoxes[1].Name = "inputTextBoxes[1]";
-            inputTextBoxes[1].ReadOnly = true;
-            inputTextBoxes[1].Size = new Size(362, 52);
-            inputTextBoxes[1].TabIndex = 33;
-            inputTextBoxes[1].TextAlign = HorizontalAlignment.Right;
             // 
             // outputTextBox
             // 
@@ -94,45 +73,45 @@ namespace Caluculator
             outputTextBox.TabIndex = 34;
             outputTextBox.TextAlign = HorizontalAlignment.Right;
             // 
-            // textButton1
+            // addTextButton
             // 
-            textButton1.Font = new Font("Yu Gothic UI", 20F);
-            textButton1.Location = new Point(31, 85);
-            textButton1.Name = "textButton1";
-            textButton1.Size = new Size(64, 52);
-            textButton1.TabIndex = 35;
-            textButton1.Text = "+";
-            textButton1.UseVisualStyleBackColor = true;
+            addTextButton.Font = new Font("Yu Gothic UI", 20F);
+            addTextButton.Location = new Point(31, 85);
+            addTextButton.Name = "addTextButton";
+            addTextButton.Size = new Size(64, 52);
+            addTextButton.TabIndex = 35;
+            addTextButton.Text = "+";
+            addTextButton.UseVisualStyleBackColor = true;
             // 
-            // textButton2
+            // subtractTextButton
             // 
-            textButton2.Font = new Font("Yu Gothic UI", 20F);
-            textButton2.Location = new Point(117, 85);
-            textButton2.Name = "textButton2";
-            textButton2.Size = new Size(64, 52);
-            textButton2.TabIndex = 36;
-            textButton2.Text = "-";
-            textButton2.UseVisualStyleBackColor = true;
+            subtractTextButton.Font = new Font("Yu Gothic UI", 20F);
+            subtractTextButton.Location = new Point(117, 85);
+            subtractTextButton.Name = "subtractTextButton";
+            subtractTextButton.Size = new Size(64, 52);
+            subtractTextButton.TabIndex = 36;
+            subtractTextButton.Text = "-";
+            subtractTextButton.UseVisualStyleBackColor = true;
             // 
-            // textButton4
+            // divideTextButton
             // 
-            textButton4.Font = new Font("Yu Gothic UI", 20F);
-            textButton4.Location = new Point(291, 85);
-            textButton4.Name = "textButton4";
-            textButton4.Size = new Size(64, 52);
-            textButton4.TabIndex = 38;
-            textButton4.Text = "÷";
-            textButton4.UseVisualStyleBackColor = true;
+            divideTextButton.Font = new Font("Yu Gothic UI", 20F);
+            divideTextButton.Location = new Point(291, 85);
+            divideTextButton.Name = "divideTextButton";
+            divideTextButton.Size = new Size(64, 52);
+            divideTextButton.TabIndex = 38;
+            divideTextButton.Text = "÷";
+            divideTextButton.UseVisualStyleBackColor = true;
             // 
-            // textButton5
+            // multiplyTextButton
             // 
-            textButton5.Font = new Font("Yu Gothic UI", 20F);
-            textButton5.Location = new Point(205, 85);
-            textButton5.Name = "textButton5";
-            textButton5.Size = new Size(64, 52);
-            textButton5.TabIndex = 37;
-            textButton5.Text = "×";
-            textButton5.UseVisualStyleBackColor = true;
+            multiplyTextButton.Font = new Font("Yu Gothic UI", 20F);
+            multiplyTextButton.Location = new Point(205, 85);
+            multiplyTextButton.Name = "multiplyTextButton";
+            multiplyTextButton.Size = new Size(64, 52);
+            multiplyTextButton.TabIndex = 37;
+            multiplyTextButton.Text = "×";
+            multiplyTextButton.UseVisualStyleBackColor = true;
             // 
             // textButton6
             // 
@@ -295,18 +274,12 @@ namespace Caluculator
             Controls.Add(no9TextButton);
             Controls.Add(no8TextButton);
             Controls.Add(textButton6);
-            Controls.Add(textButton4);
-            Controls.Add(textButton5);
-            Controls.Add(textButton2);
-            Controls.Add(textButton1);
+            Controls.Add(divideTextButton);
+            Controls.Add(multiplyTextButton);
+            Controls.Add(subtractTextButton);
+            Controls.Add(addTextButton);
             Controls.Add(outputTextBox);
-            Controls.Add(inputTextBoxes[1]);
             Controls.Add(no7TextButton);
-            foreach (var tb in inputTextBoxes)
-            {
-                Controls.Add(tb);
-            }
-            
             Name = "CalculatorForm";
             Text = "Calculator";
             Load += CalculatorForm_Load;
@@ -318,10 +291,10 @@ namespace Caluculator
         private TextBox[] inputTextBoxes;
         private TextButton no7TextButton;
            private TextBox outputTextBox;
-        private TextButton textButton1;
-        private TextButton textButton2;
-        private TextButton textButton4;
-        private TextButton textButton5;
+        private TextButton addTextButton;
+        private TextButton subtractTextButton;
+        private TextButton divideTextButton;
+        private TextButton multiplyTextButton;
         private TextButton textButton6;
         private TextButton no8TextButton;
         private TextButton no9TextButton;
