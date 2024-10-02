@@ -187,6 +187,7 @@ namespace Caluculator
             dotTextButton.TabIndex = 50;
             dotTextButton.Text = ".";
             dotTextButton.UseVisualStyleBackColor = true;
+            dotTextButton.Click += dotTextButton_Click;
             // 
             // no0TextButton
             // 
@@ -263,6 +264,7 @@ namespace Caluculator
             allClearTextButton.TabIndex = 52;
             allClearTextButton.Text = "全クリア";
             allClearTextButton.UseVisualStyleBackColor = true;
+            allClearTextButton.Click += allClearTextButton_Click;
             // 
             // CalculatorForm
             // 

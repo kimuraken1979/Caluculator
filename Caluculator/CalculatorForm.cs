@@ -20,6 +20,8 @@ namespace Caluculator
             inputTextBoxes[0].Size = new Size(362, 52);
             inputTextBoxes[0].TabIndex = 2;
             inputTextBoxes[0].TextAlign = HorizontalAlignment.Right;
+            inputTextBoxes[0].TextChanged += new EventHandler(TextBox_TextChanged);
+
 
             // 
             // inputTextBoxes[1]
@@ -32,6 +34,7 @@ namespace Caluculator
             inputTextBoxes[1].Size = new Size(362, 52);
             inputTextBoxes[1].TabIndex = 33;
             inputTextBoxes[1].TextAlign = HorizontalAlignment.Right;
+            inputTextBoxes[1].TextChanged += new EventHandler(TextBox_TextChanged);
 
 
             foreach (var tb in inputTextBoxes)
@@ -40,6 +43,16 @@ namespace Caluculator
             }
         }
 
+
+        // イベントハンドラの実装
+        private void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (indexInputTextBoxes == 0)
+            {
+                SetButtonState(!string.IsNullOrEmpty(textBox.Text));
+            }
+        }
 
         private void CalculatorForm_Load(object sender, EventArgs e)
         {
@@ -68,15 +81,14 @@ namespace Caluculator
             SetButtonState(false);
 
             equallTextButton.Enabled = false;
-
         }
 
         private void SetButtonState(bool state)
         {
-            addTextButton.Enabled = false;
-            subtractTextButton.Enabled = false;
-            multiplyTextButton.Enabled = false;
-            divideTextButton.Enabled = false;
+            addTextButton.Enabled = state;
+            subtractTextButton.Enabled = state;
+            multiplyTextButton.Enabled = state;
+            divideTextButton.Enabled = state;
         }
 
         private void SetActiveState()
@@ -157,6 +169,21 @@ namespace Caluculator
         private void clearTextButton_Click(object sender, EventArgs e)
         {
             inputTextBoxes[indexInputTextBoxes].Text = string.Empty;
+        }
+
+        private void allClearTextButton_Click(object sender, EventArgs e)
+        {
+            Set1stState();
+        }
+
+        private void dotTextButton_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(inputTextBoxes[indexInputTextBoxes].Text) == true)
+            {
+                inputTextBoxes[indexInputTextBoxes].Text = "0";
+            }
+
+            inputTextBoxes[indexInputTextBoxes].Text += ".";
         }
     }
 }
