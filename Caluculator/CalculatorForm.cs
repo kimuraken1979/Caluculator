@@ -1,8 +1,22 @@
+using Calculator.Command;
+using System.Reflection.Emit;
+
 namespace Caluculator
 {
     public partial class CalculatorForm : Form
     {
         private int indexInputTextBoxes = 0;
+
+        private OperationType operandType;
+
+        enum OperationType
+        {
+            Addition,       // ‰ÁŽZ
+            Subtraction,    // Œ¸ŽZ
+            Multiplication, // æŽZ
+            Division        // œŽZ
+        }
+
 
         public CalculatorForm()
         {
@@ -216,21 +230,25 @@ namespace Caluculator
 
         private void addTextButton_Click(object sender, EventArgs e)
         {
+            operandType = OperationType.Addition;
             Set2ndState(addTextButton);
         }
 
         private void subtractTextButton_Click(object sender, EventArgs e)
         {
+            operandType = OperationType.Subtraction;
             Set2ndState(subtractTextButton);
         }
 
         private void multiplyTextButton_Click(object sender, EventArgs e)
         {
+            operandType = OperationType.Multiplication;
             Set2ndState(multiplyTextButton);
         }
 
         private void divideTextButton_Click(object sender, EventArgs e)
         {
+            operandType = OperationType.Division;
             Set2ndState(divideTextButton);
         }
 
@@ -238,6 +256,25 @@ namespace Caluculator
         {
             equallTextButton.Enabled = false;
             SetInactiveState();
+
+            Calculator.Command.Calculator calculator = new ();
+
+            double a = double.Parse(inputTextBoxes[0].Text);
+            double b = double.Parse(inputTextBoxes[1].Text);
+
+            // ‰ÁŽZƒRƒ}ƒ“ƒh
+            ICommand command = operandType switch
+            {
+                OperationType.Addition => new AddCommand(a, b),
+                OperationType.Subtraction => new SubtractCommand(a, b),
+                OperationType.Multiplication => new MultiplyCommand(a, b),
+                OperationType.Division => new DivideCommand(a, b),
+                _ => throw new InvalidOperationException()
+            };
+
+
+            outputTextBox.Text = calculator.ExecuteCommand(command).ToString();
+            System.Diagnostics.Debug.WriteLine("ƒeƒXƒg: " + calculator.ExecuteCommand(command));
         }
     }
 }
