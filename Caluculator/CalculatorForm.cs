@@ -139,7 +139,7 @@ namespace Caluculator
 
         private void pmTextButton_Click(object sender, EventArgs e)
         {
-            if( string.IsNullOrEmpty( inputTextBoxes[indexInputTextBoxes].Text))
+            if (string.IsNullOrEmpty(inputTextBoxes[indexInputTextBoxes].Text))
             {
                 return;
             }
@@ -152,6 +152,11 @@ namespace Caluculator
             {
                 inputTextBoxes[indexInputTextBoxes].Text = inputTextBoxes[indexInputTextBoxes].Text.Insert(0, "-");
             }
+        }
+
+        private void clearTextButton_Click(object sender, EventArgs e)
+        {
+            inputTextBoxes[indexInputTextBoxes].Text = string.Empty;
         }
     }
 }

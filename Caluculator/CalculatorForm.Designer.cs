@@ -252,6 +252,7 @@ namespace Caluculator
             clearTextButton.TabIndex = 51;
             clearTextButton.Text = "クリア";
             clearTextButton.UseVisualStyleBackColor = true;
+            clearTextButton.Click += clearTextButton_Click;
             // 
             // allClearTextButton
             // 
