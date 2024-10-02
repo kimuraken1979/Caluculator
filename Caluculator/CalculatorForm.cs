@@ -2,6 +2,7 @@ using Calculator.Command;
 using System.Reflection.Emit;
 using log4net;
 using log4net.Config;
+using Calculator;
 
 namespace Caluculator
 {
@@ -154,61 +155,85 @@ namespace Caluculator
             inputTextBoxes[indexInputTextBoxes].BackColor = Color.White;
         }
 
+
+        private void noTextButton_Click(object sender)
+        {
+            ClickButtonLog(sender);
+            if (indexInputTextBoxes > -1)
+            {
+                inputTextBoxes[indexInputTextBoxes].Text += ((TextButton)sender).Text;
+            }
+        }
+
         private void no0TextButton_Click(object sender, EventArgs e)
         {
+            ClickButtonLog(sender);
+
+            if( indexInputTextBoxes< 0)
+            {
+                return;
+            }
+
             if (string.IsNullOrEmpty(inputTextBoxes[indexInputTextBoxes].Text) == false)
             {
-                inputTextBoxes[indexInputTextBoxes].Text += "0";
+                inputTextBoxes[indexInputTextBoxes].Text += ((TextButton)sender).Text;
             }
         }
 
         private void no1TextButton_Click(object sender, EventArgs e)
         {
-            inputTextBoxes[indexInputTextBoxes].Text += "1";
+            noTextButton_Click(sender);
         }
 
         private void no2TextButton_Click(object sender, EventArgs e)
         {
-            inputTextBoxes[indexInputTextBoxes].Text += "2";
+            noTextButton_Click(sender);
         }
 
         private void no3TextButton_Click(object sender, EventArgs e)
         {
-            inputTextBoxes[indexInputTextBoxes].Text += "3";
+            noTextButton_Click(sender);
         }
 
         private void no4TextButton_Click(object sender, EventArgs e)
         {
-            inputTextBoxes[indexInputTextBoxes].Text += "4";
+            noTextButton_Click(sender);
         }
 
         private void no5TextButton_Click(object sender, EventArgs e)
         {
-            inputTextBoxes[indexInputTextBoxes].Text += "5";
+            noTextButton_Click(sender);
         }
 
         private void no6TextButton_Click(object sender, EventArgs e)
         {
-            inputTextBoxes[indexInputTextBoxes].Text += "6";
+            noTextButton_Click(sender);
         }
 
         private void no7TextButton_Click(object sender, EventArgs e)
         {
-            inputTextBoxes[indexInputTextBoxes].Text += "7";
+            noTextButton_Click(sender);
         }
 
         private void no8TextButton_Click(object sender, EventArgs e)
         {
-            inputTextBoxes[indexInputTextBoxes].Text += "8";
+            noTextButton_Click(sender);
         }
 
         private void no9TextButton_Click(object sender, EventArgs e)
         {
-            inputTextBoxes[indexInputTextBoxes].Text += "9";
+            noTextButton_Click(sender);
         }
 
         private void pmTextButton_Click(object sender, EventArgs e)
         {
+            ClickButtonLog(sender);
+
+            if( indexInputTextBoxes < 0)
+            {
+                return;
+            }
+
             if (string.IsNullOrEmpty(inputTextBoxes[indexInputTextBoxes].Text))
             {
                 return;
@@ -226,16 +251,31 @@ namespace Caluculator
 
         private void clearTextButton_Click(object sender, EventArgs e)
         {
+            ClickButtonLog(sender);
+
+            if (indexInputTextBoxes < 0)
+            {
+                return;
+            }
+
             inputTextBoxes[indexInputTextBoxes].Text = string.Empty;
         }
 
         private void allClearTextButton_Click(object sender, EventArgs e)
         {
+            ClickButtonLog(sender);
             Set1stState();
         }
 
         private void dotTextButton_Click(object sender, EventArgs e)
         {
+            ClickButtonLog(sender);
+
+            if (indexInputTextBoxes < 0)
+            {
+                return;
+            }
+
             if (string.IsNullOrEmpty(inputTextBoxes[indexInputTextBoxes].Text) == true)
             {
                 inputTextBoxes[indexInputTextBoxes].Text = "0";
@@ -258,33 +298,40 @@ namespace Caluculator
 
         private void addTextButton_Click(object sender, EventArgs e)
         {
+            ClickButtonLog(sender);
             operandType = OperationType.Addition;
             Set2ndState(addTextButton);
         }
 
         private void subtractTextButton_Click(object sender, EventArgs e)
         {
+            ClickButtonLog(sender);
             operandType = OperationType.Subtraction;
             Set2ndState(subtractTextButton);
         }
 
         private void multiplyTextButton_Click(object sender, EventArgs e)
         {
+            ClickButtonLog(sender);
             operandType = OperationType.Multiplication;
             Set2ndState(multiplyTextButton);
         }
 
         private void divideTextButton_Click(object sender, EventArgs e)
         {
+            ClickButtonLog(sender);
             operandType = OperationType.Division;
             Set2ndState(divideTextButton);
         }
 
         private void equallTextButton_Click(object sender, EventArgs e)
         {
+            ClickButtonLog(sender);
+
             clearTextButton.Enabled = false;
             equallTextButton.Enabled = false;
             SetInactiveState();
+            indexInputTextBoxes = -1;
 
             Calculator.Command.Calculator calculator = new ();
 
@@ -301,9 +348,13 @@ namespace Caluculator
                 _ => throw new InvalidOperationException()
             };
 
-
             outputTextBox.Text = calculator.ExecuteCommand(command).ToString();
-            System.Diagnostics.Debug.WriteLine("テスト: " + calculator.ExecuteCommand(command));
+            log.Info($"演算結果:{outputTextBox.Text}");
+        }
+
+        private void ClickButtonLog(object sender)
+        {
+            log.Info($"{((TextButton)sender).Text}ボタン押下");
         }
     }
 }
