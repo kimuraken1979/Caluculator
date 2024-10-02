@@ -214,7 +214,6 @@ namespace Caluculator
             SetActiveState();
         }
 
-
         private void addTextButton_Click(object sender, EventArgs e)
         {
             Set2ndState(addTextButton);
@@ -224,6 +223,11 @@ namespace Caluculator
         {
             equallTextButton.Enabled = false;
             SetInactiveState();
+        }
+
+        private void subtractTextButton_Click(object sender, EventArgs e)
+        {
+            Set2ndState(subtractTextButton);
         }
     }
 }

@@ -93,6 +93,7 @@ namespace Caluculator
             subtractTextButton.TabIndex = 36;
             subtractTextButton.Text = "-";
             subtractTextButton.UseVisualStyleBackColor = true;
+            subtractTextButton.Click += subtractTextButton_Click;
             // 
             // divideTextButton
             // 
