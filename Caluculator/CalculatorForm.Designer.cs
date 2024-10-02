@@ -82,6 +82,7 @@ namespace Caluculator
             addTextButton.TabIndex = 35;
             addTextButton.Text = "+";
             addTextButton.UseVisualStyleBackColor = true;
+            addTextButton.Click += addTextButton_Click;
             // 
             // subtractTextButton
             // 
@@ -122,6 +123,7 @@ namespace Caluculator
             equallTextButton.TabIndex = 39;
             equallTextButton.Text = "=";
             equallTextButton.UseVisualStyleBackColor = true;
+            equallTextButton.Click += equallTextButton_Click;
             // 
             // no8TextButton
             // 

@@ -20,7 +20,7 @@ namespace Caluculator
             inputTextBoxes[0].Size = new Size(362, 52);
             inputTextBoxes[0].TabIndex = 2;
             inputTextBoxes[0].TextAlign = HorizontalAlignment.Right;
-            inputTextBoxes[0].TextChanged += new EventHandler(TextBox_TextChanged);
+            inputTextBoxes[0].TextChanged += new EventHandler(TextBox_TextChanged0);
 
 
             // 
@@ -34,7 +34,7 @@ namespace Caluculator
             inputTextBoxes[1].Size = new Size(362, 52);
             inputTextBoxes[1].TabIndex = 33;
             inputTextBoxes[1].TextAlign = HorizontalAlignment.Right;
-            inputTextBoxes[1].TextChanged += new EventHandler(TextBox_TextChanged);
+            inputTextBoxes[1].TextChanged += new EventHandler(TextBox_TextChanged1);
 
 
             foreach (var tb in inputTextBoxes)
@@ -44,15 +44,18 @@ namespace Caluculator
         }
 
 
-        // イベントハンドラの実装
-        private void TextBox_TextChanged(object sender, EventArgs e)
+        private void TextBox_TextChanged0(object sender, EventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            if (indexInputTextBoxes == 0)
-            {
-                SetButtonState(!string.IsNullOrEmpty(textBox.Text));
-            }
+            SetButtonState(!string.IsNullOrEmpty(textBox.Text));
         }
+
+        private void TextBox_TextChanged1(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            equallTextButton.Enabled = (!string.IsNullOrEmpty(textBox.Text));
+        }
+
 
         private void CalculatorForm_Load(object sender, EventArgs e)
         {
@@ -79,6 +82,7 @@ namespace Caluculator
             outputTextBox.BackColor = SystemColors.Control;
 
             SetButtonState(false);
+            SetButtonVisible(true);
 
             equallTextButton.Enabled = false;
         }
@@ -89,6 +93,18 @@ namespace Caluculator
             subtractTextButton.Enabled = state;
             multiplyTextButton.Enabled = state;
             divideTextButton.Enabled = state;
+        }
+        private void SetButtonVisible(bool visible)
+        {
+            addTextButton.Visible = visible;
+            subtractTextButton.Visible = visible;
+            multiplyTextButton.Visible = visible;
+            divideTextButton.Visible = visible;
+        }
+
+        private void SetInactiveState()
+        {
+            inputTextBoxes[indexInputTextBoxes].BackColor = SystemColors.Control;
         }
 
         private void SetActiveState()
@@ -184,6 +200,30 @@ namespace Caluculator
             }
 
             inputTextBoxes[indexInputTextBoxes].Text += ".";
+        }
+
+        private void Set2ndState(Calculator.TextButton textButton)
+        {
+            SetButtonState(false);
+            SetButtonVisible(false);
+
+            textButton.Visible = true;
+
+            SetInactiveState();
+            indexInputTextBoxes = 1;
+            SetActiveState();
+        }
+
+
+        private void addTextButton_Click(object sender, EventArgs e)
+        {
+            Set2ndState(addTextButton);
+        }
+
+        private void equallTextButton_Click(object sender, EventArgs e)
+        {
+            equallTextButton.Enabled = false;
+            SetInactiveState();
         }
     }
 }
