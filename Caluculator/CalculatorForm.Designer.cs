@@ -296,6 +296,8 @@ namespace Caluculator
             Controls.Add(addTextButton);
             Controls.Add(outputTextBox);
             Controls.Add(no7TextButton);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
+            MaximizeBox = false;
             Name = "CalculatorForm";
             Text = "Calculator";
             Load += CalculatorForm_Load;
