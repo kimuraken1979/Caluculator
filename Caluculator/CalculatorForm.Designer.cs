@@ -30,14 +30,13 @@ namespace Caluculator
         /// </summary>
         private void InitializeComponent()
         {
-            inputTextBoxes = new TextBox[2];
             no7TextButton = new TextButton();
             outputTextBox = new TextBox();
             addTextButton = new TextButton();
             subtractTextButton = new TextButton();
             divideTextButton = new TextButton();
             multiplyTextButton = new TextButton();
-            textButton6 = new TextButton();
+            equallTextButton = new TextButton();
             no8TextButton = new TextButton();
             no9TextButton = new TextButton();
             no6TextButton = new TextButton();
@@ -62,6 +61,7 @@ namespace Caluculator
             no7TextButton.TabIndex = 21;
             no7TextButton.Text = "7";
             no7TextButton.UseVisualStyleBackColor = true;
+            no7TextButton.Click += no7TextButton_Click;
             // 
             // outputTextBox
             // 
@@ -113,15 +113,15 @@ namespace Caluculator
             multiplyTextButton.Text = "×";
             multiplyTextButton.UseVisualStyleBackColor = true;
             // 
-            // textButton6
+            // equallTextButton
             // 
-            textButton6.Font = new Font("Yu Gothic UI", 20F);
-            textButton6.Location = new Point(158, 243);
-            textButton6.Name = "textButton6";
-            textButton6.Size = new Size(64, 52);
-            textButton6.TabIndex = 39;
-            textButton6.Text = "=";
-            textButton6.UseVisualStyleBackColor = true;
+            equallTextButton.Font = new Font("Yu Gothic UI", 20F);
+            equallTextButton.Location = new Point(158, 243);
+            equallTextButton.Name = "equallTextButton";
+            equallTextButton.Size = new Size(64, 52);
+            equallTextButton.TabIndex = 39;
+            equallTextButton.Text = "=";
+            equallTextButton.UseVisualStyleBackColor = true;
             // 
             // no8TextButton
             // 
@@ -132,6 +132,7 @@ namespace Caluculator
             no8TextButton.TabIndex = 40;
             no8TextButton.Text = "8";
             no8TextButton.UseVisualStyleBackColor = true;
+            no8TextButton.Click += no8TextButton_Click;
             // 
             // no9TextButton
             // 
@@ -142,6 +143,7 @@ namespace Caluculator
             no9TextButton.TabIndex = 41;
             no9TextButton.Text = "9";
             no9TextButton.UseVisualStyleBackColor = true;
+            no9TextButton.Click += no9TextButton_Click;
             // 
             // no6TextButton
             // 
@@ -152,6 +154,7 @@ namespace Caluculator
             no6TextButton.TabIndex = 44;
             no6TextButton.Text = "6";
             no6TextButton.UseVisualStyleBackColor = true;
+            no6TextButton.Click += no6TextButton_Click;
             // 
             // no5TextButton
             // 
@@ -162,6 +165,7 @@ namespace Caluculator
             no5TextButton.TabIndex = 43;
             no5TextButton.Text = "5";
             no5TextButton.UseVisualStyleBackColor = true;
+            no5TextButton.Click += no5TextButton_Click;
             // 
             // no4TextButton
             // 
@@ -172,6 +176,7 @@ namespace Caluculator
             no4TextButton.TabIndex = 42;
             no4TextButton.Text = "4";
             no4TextButton.UseVisualStyleBackColor = true;
+            no4TextButton.Click += no4TextButton_Click;
             // 
             // dotTextButton
             // 
@@ -213,6 +218,7 @@ namespace Caluculator
             no3TextButton.TabIndex = 47;
             no3TextButton.Text = "3";
             no3TextButton.UseVisualStyleBackColor = true;
+            no3TextButton.Click += no3TextButton_Click;
             // 
             // no2TextButton
             // 
@@ -223,6 +229,7 @@ namespace Caluculator
             no2TextButton.TabIndex = 46;
             no2TextButton.Text = "2";
             no2TextButton.UseVisualStyleBackColor = true;
+            no2TextButton.Click += no2TextButton_Click;
             // 
             // no1TextButton
             // 
@@ -273,7 +280,7 @@ namespace Caluculator
             Controls.Add(no4TextButton);
             Controls.Add(no9TextButton);
             Controls.Add(no8TextButton);
-            Controls.Add(textButton6);
+            Controls.Add(equallTextButton);
             Controls.Add(divideTextButton);
             Controls.Add(multiplyTextButton);
             Controls.Add(subtractTextButton);
@@ -295,7 +302,7 @@ namespace Caluculator
         private TextButton subtractTextButton;
         private TextButton divideTextButton;
         private TextButton multiplyTextButton;
-        private TextButton textButton6;
+        private TextButton equallTextButton;
         private TextButton no8TextButton;
         private TextButton no9TextButton;
         private TextButton no6TextButton;

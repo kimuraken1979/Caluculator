@@ -8,6 +8,8 @@ namespace Caluculator
         {
             InitializeComponent();
 
+            inputTextBoxes = new TextBox[2];
+
             // inputTextBoxes[0]
             // 
             inputTextBoxes[0] = new TextBox();
@@ -64,9 +66,12 @@ namespace Caluculator
             outputTextBox.BackColor = SystemColors.Control;
 
             SetButtonState(false);
+
+            equallTextButton.Enabled = false;
+
         }
 
-        private void SetButtonState( bool state)
+        private void SetButtonState(bool state)
         {
             addTextButton.Enabled = false;
             subtractTextButton.Enabled = false;
@@ -90,6 +95,46 @@ namespace Caluculator
         private void no1TextButton_Click(object sender, EventArgs e)
         {
             inputTextBoxes[indexInputTextBoxes].Text += "1";
+        }
+
+        private void no2TextButton_Click(object sender, EventArgs e)
+        {
+            inputTextBoxes[indexInputTextBoxes].Text += "2";
+        }
+
+        private void no3TextButton_Click(object sender, EventArgs e)
+        {
+            inputTextBoxes[indexInputTextBoxes].Text += "3";
+        }
+
+        private void no4TextButton_Click(object sender, EventArgs e)
+        {
+            inputTextBoxes[indexInputTextBoxes].Text += "4";
+        }
+
+        private void no5TextButton_Click(object sender, EventArgs e)
+        {
+            inputTextBoxes[indexInputTextBoxes].Text += "5";
+        }
+
+        private void no6TextButton_Click(object sender, EventArgs e)
+        {
+            inputTextBoxes[indexInputTextBoxes].Text += "6";
+        }
+
+        private void no7TextButton_Click(object sender, EventArgs e)
+        {
+            inputTextBoxes[indexInputTextBoxes].Text += "7";
+        }
+
+        private void no8TextButton_Click(object sender, EventArgs e)
+        {
+            inputTextBoxes[indexInputTextBoxes].Text += "8";
+        }
+
+        private void no9TextButton_Click(object sender, EventArgs e)
+        {
+            inputTextBoxes[indexInputTextBoxes].Text += "9";
         }
     }
 }
