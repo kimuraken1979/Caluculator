@@ -104,6 +104,7 @@ namespace Caluculator
             divideTextButton.TabIndex = 38;
             divideTextButton.Text = "÷";
             divideTextButton.UseVisualStyleBackColor = true;
+            divideTextButton.Click += divideTextButton_Click;
             // 
             // multiplyTextButton
             // 
@@ -114,6 +115,7 @@ namespace Caluculator
             multiplyTextButton.TabIndex = 37;
             multiplyTextButton.Text = "×";
             multiplyTextButton.UseVisualStyleBackColor = true;
+            multiplyTextButton.Click += multiplyTextButton_Click;
             // 
             // equallTextButton
             // 
