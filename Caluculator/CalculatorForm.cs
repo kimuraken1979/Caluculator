@@ -99,6 +99,7 @@ namespace Caluculator
             SetButtonVisible(true);
 
             equallTextButton.Enabled = false;
+            clearTextButton.Enabled = true;
         }
 
         private void SetButtonState(bool state)
@@ -254,6 +255,7 @@ namespace Caluculator
 
         private void equallTextButton_Click(object sender, EventArgs e)
         {
+            clearTextButton.Enabled = false;
             equallTextButton.Enabled = false;
             SetInactiveState();
 

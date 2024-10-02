@@ -251,7 +251,7 @@ namespace Caluculator
             // 
             // clearTextButton
             // 
-            clearTextButton.Font = new Font("Yu Gothic UI", 20F);
+            clearTextButton.Font = new Font("Yu Gothic UI", 15F);
             clearTextButton.Location = new Point(409, 314);
             clearTextButton.Name = "clearTextButton";
             clearTextButton.Size = new Size(118, 52);
