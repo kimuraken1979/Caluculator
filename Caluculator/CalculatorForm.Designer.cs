@@ -208,6 +208,7 @@ namespace Caluculator
             pmTextButton.TabIndex = 48;
             pmTextButton.Text = "+/-";
             pmTextButton.UseVisualStyleBackColor = true;
+            pmTextButton.Click += pmTextButton_Click;
             // 
             // no3TextButton
             // 
